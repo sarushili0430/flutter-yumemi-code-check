@@ -14,6 +14,7 @@ analyzer:
     - custom_lint
   exclude:
     - lib/**/*.freezed.dart
+    - lib/**/*.g.dart
 
 linter:
   # The lint rules applied to this project can be customized in the
