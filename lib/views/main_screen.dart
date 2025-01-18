@@ -25,9 +25,13 @@ class MainScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        SearchBar(),
+        SearchBar(
+          leading: Icon(Icons.search),
+          onTapOutside: (event) =>
+              FocusManager.instance.primaryFocus?.unfocus(),
+        ),
         Placeholder(),
       ],
     );
