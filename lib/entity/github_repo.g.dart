@@ -9,8 +9,8 @@ part of 'github_repo.dart';
 _$GithubRepoResultImpl _$$GithubRepoResultImplFromJson(
         Map<String, dynamic> json) =>
     _$GithubRepoResultImpl(
-      totalCount: (json['totalCount'] as num).toInt(),
-      incompleteResults: json['incompleteResults'] as bool,
+      totalCount: (json['total_count'] as num).toInt(),
+      incompleteResults: json['incomplete_results'] as bool,
       items: (json['items'] as List<dynamic>)
           .map((e) => GithubRepoDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,31 +19,31 @@ _$GithubRepoResultImpl _$$GithubRepoResultImplFromJson(
 Map<String, dynamic> _$$GithubRepoResultImplToJson(
         _$GithubRepoResultImpl instance) =>
     <String, dynamic>{
-      'totalCount': instance.totalCount,
-      'incompleteResults': instance.incompleteResults,
+      'total_count': instance.totalCount,
+      'incomplete_results': instance.incompleteResults,
       'items': instance.items,
     };
 
 _$GithubRepoDetailImpl _$$GithubRepoDetailImplFromJson(
         Map<String, dynamic> json) =>
     _$GithubRepoDetailImpl(
-      repoName: json['repoName'] as String,
-      avatarUrl: json['avatarUrl'] as String,
-      language: json['language'] as String,
-      starCount: (json['starCount'] as num).toInt(),
-      watcherCount: (json['watcherCount'] as num).toInt(),
-      forkCount: (json['forkCount'] as num).toInt(),
-      issueCount: (json['issueCount'] as num).toInt(),
+      title: json['title'] as String,
+      avatarUrl: Uri.parse(json['avatar_url'] as String),
+      language: json['language'] as String?,
+      starCount: (json['stargazers_count'] as num).toInt(),
+      watcherCount: (json['watchers_count'] as num).toInt(),
+      forkCount: (json['forks_count'] as num).toInt(),
+      issueCount: (json['open_issues_count'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$GithubRepoDetailImplToJson(
         _$GithubRepoDetailImpl instance) =>
     <String, dynamic>{
-      'repoName': instance.repoName,
-      'avatarUrl': instance.avatarUrl,
+      'title': instance.title,
+      'avatar_url': instance.avatarUrl.toString(),
       'language': instance.language,
-      'starCount': instance.starCount,
-      'watcherCount': instance.watcherCount,
-      'forkCount': instance.forkCount,
-      'issueCount': instance.issueCount,
+      'stargazers_count': instance.starCount,
+      'watchers_count': instance.watcherCount,
+      'forks_count': instance.forkCount,
+      'open_issues_count': instance.issueCount,
     };

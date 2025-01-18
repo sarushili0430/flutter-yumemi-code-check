@@ -20,7 +20,9 @@ GithubRepoResult _$GithubRepoResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GithubRepoResult {
+  @JsonKey(name: 'total_count')
   int get totalCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'incomplete_results')
   bool get incompleteResults => throw _privateConstructorUsedError;
   List<GithubRepoDetail> get items => throw _privateConstructorUsedError;
 
@@ -41,7 +43,9 @@ abstract class $GithubRepoResultCopyWith<$Res> {
       _$GithubRepoResultCopyWithImpl<$Res, GithubRepoResult>;
   @useResult
   $Res call(
-      {int totalCount, bool incompleteResults, List<GithubRepoDetail> items});
+      {@JsonKey(name: 'total_count') int totalCount,
+      @JsonKey(name: 'incomplete_results') bool incompleteResults,
+      List<GithubRepoDetail> items});
 }
 
 /// @nodoc
@@ -89,7 +93,9 @@ abstract class _$$GithubRepoResultImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int totalCount, bool incompleteResults, List<GithubRepoDetail> items});
+      {@JsonKey(name: 'total_count') int totalCount,
+      @JsonKey(name: 'incomplete_results') bool incompleteResults,
+      List<GithubRepoDetail> items});
 }
 
 /// @nodoc
@@ -132,8 +138,8 @@ class _$GithubRepoResultImpl
     with DiagnosticableTreeMixin
     implements _GithubRepoResult {
   const _$GithubRepoResultImpl(
-      {required this.totalCount,
-      required this.incompleteResults,
+      {@JsonKey(name: 'total_count') required this.totalCount,
+      @JsonKey(name: 'incomplete_results') required this.incompleteResults,
       required final List<GithubRepoDetail> items})
       : _items = items;
 
@@ -141,8 +147,10 @@ class _$GithubRepoResultImpl
       _$$GithubRepoResultImplFromJson(json);
 
   @override
+  @JsonKey(name: 'total_count')
   final int totalCount;
   @override
+  @JsonKey(name: 'incomplete_results')
   final bool incompleteResults;
   final List<GithubRepoDetail> _items;
   @override
@@ -203,7 +211,8 @@ class _$GithubRepoResultImpl
 
 abstract class _GithubRepoResult implements GithubRepoResult {
   const factory _GithubRepoResult(
-      {required final int totalCount,
+      {@JsonKey(name: 'total_count') required final int totalCount,
+      @JsonKey(name: 'incomplete_results')
       required final bool incompleteResults,
       required final List<GithubRepoDetail> items}) = _$GithubRepoResultImpl;
 
@@ -211,8 +220,10 @@ abstract class _GithubRepoResult implements GithubRepoResult {
       _$GithubRepoResultImpl.fromJson;
 
   @override
+  @JsonKey(name: 'total_count')
   int get totalCount;
   @override
+  @JsonKey(name: 'incomplete_results')
   bool get incompleteResults;
   @override
   List<GithubRepoDetail> get items;
@@ -231,12 +242,17 @@ GithubRepoDetail _$GithubRepoDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GithubRepoDetail {
-  String get repoName => throw _privateConstructorUsedError;
-  String get avatarUrl => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'avatar_url')
+  Uri get avatarUrl => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
+  @JsonKey(name: 'stargazers_count')
   int get starCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'watchers_count')
   int get watcherCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'forks_count')
   int get forkCount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'open_issues_count')
   int get issueCount => throw _privateConstructorUsedError;
 
   /// Serializes this GithubRepoDetail to a JSON map.
@@ -256,13 +272,13 @@ abstract class $GithubRepoDetailCopyWith<$Res> {
       _$GithubRepoDetailCopyWithImpl<$Res, GithubRepoDetail>;
   @useResult
   $Res call(
-      {String repoName,
-      String avatarUrl,
-      String language,
-      int starCount,
-      int watcherCount,
-      int forkCount,
-      int issueCount});
+      {String title,
+      @JsonKey(name: 'avatar_url') Uri avatarUrl,
+      String? language,
+      @JsonKey(name: 'stargazers_count') int starCount,
+      @JsonKey(name: 'watchers_count') int watcherCount,
+      @JsonKey(name: 'forks_count') int forkCount,
+      @JsonKey(name: 'open_issues_count') int issueCount});
 }
 
 /// @nodoc
@@ -280,27 +296,27 @@ class _$GithubRepoDetailCopyWithImpl<$Res, $Val extends GithubRepoDetail>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? repoName = null,
+    Object? title = null,
     Object? avatarUrl = null,
-    Object? language = null,
+    Object? language = freezed,
     Object? starCount = null,
     Object? watcherCount = null,
     Object? forkCount = null,
     Object? issueCount = null,
   }) {
     return _then(_value.copyWith(
-      repoName: null == repoName
-          ? _value.repoName
-          : repoName // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      language: null == language
+              as Uri,
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       starCount: null == starCount
           ? _value.starCount
           : starCount // ignore: cast_nullable_to_non_nullable
@@ -330,13 +346,13 @@ abstract class _$$GithubRepoDetailImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String repoName,
-      String avatarUrl,
-      String language,
-      int starCount,
-      int watcherCount,
-      int forkCount,
-      int issueCount});
+      {String title,
+      @JsonKey(name: 'avatar_url') Uri avatarUrl,
+      String? language,
+      @JsonKey(name: 'stargazers_count') int starCount,
+      @JsonKey(name: 'watchers_count') int watcherCount,
+      @JsonKey(name: 'forks_count') int forkCount,
+      @JsonKey(name: 'open_issues_count') int issueCount});
 }
 
 /// @nodoc
@@ -352,27 +368,27 @@ class __$$GithubRepoDetailImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? repoName = null,
+    Object? title = null,
     Object? avatarUrl = null,
-    Object? language = null,
+    Object? language = freezed,
     Object? starCount = null,
     Object? watcherCount = null,
     Object? forkCount = null,
     Object? issueCount = null,
   }) {
     return _then(_$GithubRepoDetailImpl(
-      repoName: null == repoName
-          ? _value.repoName
-          : repoName // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       avatarUrl: null == avatarUrl
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      language: null == language
+              as Uri,
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       starCount: null == starCount
           ? _value.starCount
           : starCount // ignore: cast_nullable_to_non_nullable
@@ -399,35 +415,40 @@ class _$GithubRepoDetailImpl
     with DiagnosticableTreeMixin
     implements _GithubRepoDetail {
   const _$GithubRepoDetailImpl(
-      {required this.repoName,
-      required this.avatarUrl,
+      {required this.title,
+      @JsonKey(name: 'avatar_url') required this.avatarUrl,
       required this.language,
-      required this.starCount,
-      required this.watcherCount,
-      required this.forkCount,
-      required this.issueCount});
+      @JsonKey(name: 'stargazers_count') required this.starCount,
+      @JsonKey(name: 'watchers_count') required this.watcherCount,
+      @JsonKey(name: 'forks_count') required this.forkCount,
+      @JsonKey(name: 'open_issues_count') required this.issueCount});
 
   factory _$GithubRepoDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$GithubRepoDetailImplFromJson(json);
 
   @override
-  final String repoName;
+  final String title;
   @override
-  final String avatarUrl;
+  @JsonKey(name: 'avatar_url')
+  final Uri avatarUrl;
   @override
-  final String language;
+  final String? language;
   @override
+  @JsonKey(name: 'stargazers_count')
   final int starCount;
   @override
+  @JsonKey(name: 'watchers_count')
   final int watcherCount;
   @override
+  @JsonKey(name: 'forks_count')
   final int forkCount;
   @override
+  @JsonKey(name: 'open_issues_count')
   final int issueCount;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GithubRepoDetail(repoName: $repoName, avatarUrl: $avatarUrl, language: $language, starCount: $starCount, watcherCount: $watcherCount, forkCount: $forkCount, issueCount: $issueCount)';
+    return 'GithubRepoDetail(title: $title, avatarUrl: $avatarUrl, language: $language, starCount: $starCount, watcherCount: $watcherCount, forkCount: $forkCount, issueCount: $issueCount)';
   }
 
   @override
@@ -435,7 +456,7 @@ class _$GithubRepoDetailImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'GithubRepoDetail'))
-      ..add(DiagnosticsProperty('repoName', repoName))
+      ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('avatarUrl', avatarUrl))
       ..add(DiagnosticsProperty('language', language))
       ..add(DiagnosticsProperty('starCount', starCount))
@@ -449,8 +470,7 @@ class _$GithubRepoDetailImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GithubRepoDetailImpl &&
-            (identical(other.repoName, repoName) ||
-                other.repoName == repoName) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
             (identical(other.language, language) ||
@@ -467,7 +487,7 @@ class _$GithubRepoDetailImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, repoName, avatarUrl, language,
+  int get hashCode => Object.hash(runtimeType, title, avatarUrl, language,
       starCount, watcherCount, forkCount, issueCount);
 
   /// Create a copy of GithubRepoDetail
@@ -489,30 +509,36 @@ class _$GithubRepoDetailImpl
 
 abstract class _GithubRepoDetail implements GithubRepoDetail {
   const factory _GithubRepoDetail(
-      {required final String repoName,
-      required final String avatarUrl,
-      required final String language,
-      required final int starCount,
-      required final int watcherCount,
-      required final int forkCount,
-      required final int issueCount}) = _$GithubRepoDetailImpl;
+          {required final String title,
+          @JsonKey(name: 'avatar_url') required final Uri avatarUrl,
+          required final String? language,
+          @JsonKey(name: 'stargazers_count') required final int starCount,
+          @JsonKey(name: 'watchers_count') required final int watcherCount,
+          @JsonKey(name: 'forks_count') required final int forkCount,
+          @JsonKey(name: 'open_issues_count') required final int issueCount}) =
+      _$GithubRepoDetailImpl;
 
   factory _GithubRepoDetail.fromJson(Map<String, dynamic> json) =
       _$GithubRepoDetailImpl.fromJson;
 
   @override
-  String get repoName;
+  String get title;
   @override
-  String get avatarUrl;
+  @JsonKey(name: 'avatar_url')
+  Uri get avatarUrl;
   @override
-  String get language;
+  String? get language;
   @override
+  @JsonKey(name: 'stargazers_count')
   int get starCount;
   @override
+  @JsonKey(name: 'watchers_count')
   int get watcherCount;
   @override
+  @JsonKey(name: 'forks_count')
   int get forkCount;
   @override
+  @JsonKey(name: 'open_issues_count')
   int get issueCount;
 
   /// Create a copy of GithubRepoDetail
