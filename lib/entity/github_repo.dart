@@ -21,9 +21,9 @@ abstract class GithubRepoResult implements _$GithubRepoResult {
 @freezed
 abstract class GithubRepoDetail implements _$GithubRepoDetail {
   const factory GithubRepoDetail({
-    required String title,
-    @JsonKey(name: 'owner') required Owner owner,
+    required String name,
     required String? language,
+    @JsonKey(name: 'owner') required Owner owner,
     @JsonKey(name: 'stargazers_count') required int starCount,
     @JsonKey(name: 'watchers_count') required int watcherCount,
     @JsonKey(name: 'forks_count') required int forkCount,
@@ -37,7 +37,7 @@ abstract class GithubRepoDetail implements _$GithubRepoDetail {
 @freezed
 abstract class Owner implements _$Owner {
   const factory Owner({
-    @JsonKey(name: 'avatar_url') required Uri avatarUrl,
+    @JsonKey(name: 'avatar_url') required String avatarUrl,
   }) = _Owner;
 
   factory Owner.fromJson(Map<String, dynamic> json) => _$OwnerFromJson(json);
