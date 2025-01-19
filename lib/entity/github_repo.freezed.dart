@@ -24,6 +24,7 @@ mixin _$GithubRepoResult {
   int get totalCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'incomplete_results')
   bool get incompleteResults => throw _privateConstructorUsedError;
+  @JsonKey(name: 'items')
   List<GithubRepoDetail> get items => throw _privateConstructorUsedError;
 
   /// Serializes this GithubRepoResult to a JSON map.
@@ -45,7 +46,7 @@ abstract class $GithubRepoResultCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'total_count') int totalCount,
       @JsonKey(name: 'incomplete_results') bool incompleteResults,
-      List<GithubRepoDetail> items});
+      @JsonKey(name: 'items') List<GithubRepoDetail> items});
 }
 
 /// @nodoc
@@ -95,7 +96,7 @@ abstract class _$$GithubRepoResultImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'total_count') int totalCount,
       @JsonKey(name: 'incomplete_results') bool incompleteResults,
-      List<GithubRepoDetail> items});
+      @JsonKey(name: 'items') List<GithubRepoDetail> items});
 }
 
 /// @nodoc
@@ -140,7 +141,7 @@ class _$GithubRepoResultImpl
   const _$GithubRepoResultImpl(
       {@JsonKey(name: 'total_count') required this.totalCount,
       @JsonKey(name: 'incomplete_results') required this.incompleteResults,
-      required final List<GithubRepoDetail> items})
+      @JsonKey(name: 'items') required final List<GithubRepoDetail> items})
       : _items = items;
 
   factory _$GithubRepoResultImpl.fromJson(Map<String, dynamic> json) =>
@@ -154,6 +155,7 @@ class _$GithubRepoResultImpl
   final bool incompleteResults;
   final List<GithubRepoDetail> _items;
   @override
+  @JsonKey(name: 'items')
   List<GithubRepoDetail> get items {
     if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
@@ -214,6 +216,7 @@ abstract class _GithubRepoResult implements GithubRepoResult {
       {@JsonKey(name: 'total_count') required final int totalCount,
       @JsonKey(name: 'incomplete_results')
       required final bool incompleteResults,
+      @JsonKey(name: 'items')
       required final List<GithubRepoDetail> items}) = _$GithubRepoResultImpl;
 
   factory _GithubRepoResult.fromJson(Map<String, dynamic> json) =
@@ -226,6 +229,7 @@ abstract class _GithubRepoResult implements GithubRepoResult {
   @JsonKey(name: 'incomplete_results')
   bool get incompleteResults;
   @override
+  @JsonKey(name: 'items')
   List<GithubRepoDetail> get items;
 
   /// Create a copy of GithubRepoResult
@@ -243,8 +247,8 @@ GithubRepoDetail _$GithubRepoDetailFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GithubRepoDetail {
   String get title => throw _privateConstructorUsedError;
-  @JsonKey(name: 'avatar_url')
-  Uri get avatarUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'owner')
+  Owner get owner => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
   @JsonKey(name: 'stargazers_count')
   int get starCount => throw _privateConstructorUsedError;
@@ -273,12 +277,14 @@ abstract class $GithubRepoDetailCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      @JsonKey(name: 'avatar_url') Uri avatarUrl,
+      @JsonKey(name: 'owner') Owner owner,
       String? language,
       @JsonKey(name: 'stargazers_count') int starCount,
       @JsonKey(name: 'watchers_count') int watcherCount,
       @JsonKey(name: 'forks_count') int forkCount,
       @JsonKey(name: 'open_issues_count') int issueCount});
+
+  $OwnerCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -297,7 +303,7 @@ class _$GithubRepoDetailCopyWithImpl<$Res, $Val extends GithubRepoDetail>
   @override
   $Res call({
     Object? title = null,
-    Object? avatarUrl = null,
+    Object? owner = null,
     Object? language = freezed,
     Object? starCount = null,
     Object? watcherCount = null,
@@ -309,10 +315,10 @@ class _$GithubRepoDetailCopyWithImpl<$Res, $Val extends GithubRepoDetail>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      avatarUrl: null == avatarUrl
-          ? _value.avatarUrl
-          : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as Owner,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -335,6 +341,16 @@ class _$GithubRepoDetailCopyWithImpl<$Res, $Val extends GithubRepoDetail>
               as int,
     ) as $Val);
   }
+
+  /// Create a copy of GithubRepoDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $OwnerCopyWith<$Res> get owner {
+    return $OwnerCopyWith<$Res>(_value.owner, (value) {
+      return _then(_value.copyWith(owner: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -347,12 +363,15 @@ abstract class _$$GithubRepoDetailImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      @JsonKey(name: 'avatar_url') Uri avatarUrl,
+      @JsonKey(name: 'owner') Owner owner,
       String? language,
       @JsonKey(name: 'stargazers_count') int starCount,
       @JsonKey(name: 'watchers_count') int watcherCount,
       @JsonKey(name: 'forks_count') int forkCount,
       @JsonKey(name: 'open_issues_count') int issueCount});
+
+  @override
+  $OwnerCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -369,7 +388,7 @@ class __$$GithubRepoDetailImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? avatarUrl = null,
+    Object? owner = null,
     Object? language = freezed,
     Object? starCount = null,
     Object? watcherCount = null,
@@ -381,10 +400,10 @@ class __$$GithubRepoDetailImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      avatarUrl: null == avatarUrl
-          ? _value.avatarUrl
-          : avatarUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as Owner,
       language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
@@ -416,7 +435,7 @@ class _$GithubRepoDetailImpl
     implements _GithubRepoDetail {
   const _$GithubRepoDetailImpl(
       {required this.title,
-      @JsonKey(name: 'avatar_url') required this.avatarUrl,
+      @JsonKey(name: 'owner') required this.owner,
       required this.language,
       @JsonKey(name: 'stargazers_count') required this.starCount,
       @JsonKey(name: 'watchers_count') required this.watcherCount,
@@ -429,8 +448,8 @@ class _$GithubRepoDetailImpl
   @override
   final String title;
   @override
-  @JsonKey(name: 'avatar_url')
-  final Uri avatarUrl;
+  @JsonKey(name: 'owner')
+  final Owner owner;
   @override
   final String? language;
   @override
@@ -448,7 +467,7 @@ class _$GithubRepoDetailImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'GithubRepoDetail(title: $title, avatarUrl: $avatarUrl, language: $language, starCount: $starCount, watcherCount: $watcherCount, forkCount: $forkCount, issueCount: $issueCount)';
+    return 'GithubRepoDetail(title: $title, owner: $owner, language: $language, starCount: $starCount, watcherCount: $watcherCount, forkCount: $forkCount, issueCount: $issueCount)';
   }
 
   @override
@@ -457,7 +476,7 @@ class _$GithubRepoDetailImpl
     properties
       ..add(DiagnosticsProperty('type', 'GithubRepoDetail'))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('avatarUrl', avatarUrl))
+      ..add(DiagnosticsProperty('owner', owner))
       ..add(DiagnosticsProperty('language', language))
       ..add(DiagnosticsProperty('starCount', starCount))
       ..add(DiagnosticsProperty('watcherCount', watcherCount))
@@ -471,8 +490,7 @@ class _$GithubRepoDetailImpl
         (other.runtimeType == runtimeType &&
             other is _$GithubRepoDetailImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.starCount, starCount) ||
@@ -487,7 +505,7 @@ class _$GithubRepoDetailImpl
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, avatarUrl, language,
+  int get hashCode => Object.hash(runtimeType, title, owner, language,
       starCount, watcherCount, forkCount, issueCount);
 
   /// Create a copy of GithubRepoDetail
@@ -510,7 +528,7 @@ class _$GithubRepoDetailImpl
 abstract class _GithubRepoDetail implements GithubRepoDetail {
   const factory _GithubRepoDetail(
           {required final String title,
-          @JsonKey(name: 'avatar_url') required final Uri avatarUrl,
+          @JsonKey(name: 'owner') required final Owner owner,
           required final String? language,
           @JsonKey(name: 'stargazers_count') required final int starCount,
           @JsonKey(name: 'watchers_count') required final int watcherCount,
@@ -524,8 +542,8 @@ abstract class _GithubRepoDetail implements GithubRepoDetail {
   @override
   String get title;
   @override
-  @JsonKey(name: 'avatar_url')
-  Uri get avatarUrl;
+  @JsonKey(name: 'owner')
+  Owner get owner;
   @override
   String? get language;
   @override
@@ -546,5 +564,164 @@ abstract class _GithubRepoDetail implements GithubRepoDetail {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GithubRepoDetailImplCopyWith<_$GithubRepoDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Owner _$OwnerFromJson(Map<String, dynamic> json) {
+  return _Owner.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Owner {
+  @JsonKey(name: 'avatar_url')
+  Uri get avatarUrl => throw _privateConstructorUsedError;
+
+  /// Serializes this Owner to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Owner
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OwnerCopyWith<Owner> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OwnerCopyWith<$Res> {
+  factory $OwnerCopyWith(Owner value, $Res Function(Owner) then) =
+      _$OwnerCopyWithImpl<$Res, Owner>;
+  @useResult
+  $Res call({@JsonKey(name: 'avatar_url') Uri avatarUrl});
+}
+
+/// @nodoc
+class _$OwnerCopyWithImpl<$Res, $Val extends Owner>
+    implements $OwnerCopyWith<$Res> {
+  _$OwnerCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Owner
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? avatarUrl = null,
+  }) {
+    return _then(_value.copyWith(
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OwnerImplCopyWith<$Res> implements $OwnerCopyWith<$Res> {
+  factory _$$OwnerImplCopyWith(
+          _$OwnerImpl value, $Res Function(_$OwnerImpl) then) =
+      __$$OwnerImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: 'avatar_url') Uri avatarUrl});
+}
+
+/// @nodoc
+class __$$OwnerImplCopyWithImpl<$Res>
+    extends _$OwnerCopyWithImpl<$Res, _$OwnerImpl>
+    implements _$$OwnerImplCopyWith<$Res> {
+  __$$OwnerImplCopyWithImpl(
+      _$OwnerImpl _value, $Res Function(_$OwnerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Owner
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? avatarUrl = null,
+  }) {
+    return _then(_$OwnerImpl(
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as Uri,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OwnerImpl with DiagnosticableTreeMixin implements _Owner {
+  const _$OwnerImpl({@JsonKey(name: 'avatar_url') required this.avatarUrl});
+
+  factory _$OwnerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OwnerImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'avatar_url')
+  final Uri avatarUrl;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Owner(avatarUrl: $avatarUrl)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Owner'))
+      ..add(DiagnosticsProperty('avatarUrl', avatarUrl));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OwnerImpl &&
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, avatarUrl);
+
+  /// Create a copy of Owner
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OwnerImplCopyWith<_$OwnerImpl> get copyWith =>
+      __$$OwnerImplCopyWithImpl<_$OwnerImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OwnerImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Owner implements Owner {
+  const factory _Owner(
+          {@JsonKey(name: 'avatar_url') required final Uri avatarUrl}) =
+      _$OwnerImpl;
+
+  factory _Owner.fromJson(Map<String, dynamic> json) = _$OwnerImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'avatar_url')
+  Uri get avatarUrl;
+
+  /// Create a copy of Owner
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OwnerImplCopyWith<_$OwnerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

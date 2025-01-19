@@ -28,7 +28,7 @@ _$GithubRepoDetailImpl _$$GithubRepoDetailImplFromJson(
         Map<String, dynamic> json) =>
     _$GithubRepoDetailImpl(
       title: json['title'] as String,
-      avatarUrl: Uri.parse(json['avatar_url'] as String),
+      owner: Owner.fromJson(json['owner'] as Map<String, dynamic>),
       language: json['language'] as String?,
       starCount: (json['stargazers_count'] as num).toInt(),
       watcherCount: (json['watchers_count'] as num).toInt(),
@@ -40,10 +40,19 @@ Map<String, dynamic> _$$GithubRepoDetailImplToJson(
         _$GithubRepoDetailImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'avatar_url': instance.avatarUrl.toString(),
+      'owner': instance.owner,
       'language': instance.language,
       'stargazers_count': instance.starCount,
       'watchers_count': instance.watcherCount,
       'forks_count': instance.forkCount,
       'open_issues_count': instance.issueCount,
+    };
+
+_$OwnerImpl _$$OwnerImplFromJson(Map<String, dynamic> json) => _$OwnerImpl(
+      avatarUrl: Uri.parse(json['avatar_url'] as String),
+    );
+
+Map<String, dynamic> _$$OwnerImplToJson(_$OwnerImpl instance) =>
+    <String, dynamic>{
+      'avatar_url': instance.avatarUrl.toString(),
     };
